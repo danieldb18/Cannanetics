@@ -22,8 +22,10 @@ The genetics data from the project mentioned above is still available on Googleâ
 After the initial modelling was completed, all the models performed pretty equally, explaining ~73% of the variance in the training dataset, and ~60% of the variance in the test dataset, with an RMSE score of ~3% THC for the training dataset, and ~ 4% THC for the test dataset, save for a few of the support vector regressor kernel options. After initial modelling I tuned the hyper parameters of each model, along with the min_df term of the count vectorization. In the hyper parameter tuning stage I first explored the effect of each hyper parameter on the validation scores, and then used GridSearchCV with 5 fold cross validation to determine the best combination of the hyper parameters.
 Hyper parameter optimization did not yield the results I expected, I saw very little increase across most models in the R2 value, and very little decrease in the RMSE throughout optimization. Overall, the results of the top 5 models (out of 14) from optimization can be found in Figure 2, with the Random Forest Regressor optimized by just its max_depth performing the best, with an R2 score of 0.653 for the test set, and a test RMSE of 4.61 %THC. I also found that the models scores were generally unaffected by the min_df value until it was increased to 80% of the number of documents.
 
-![Optimized Model Results](/readmeimages/optimized_model_results.png)
-<br>**Figure 2**: Top 5 models from optimization, optimization method in brackets
+<img src="/readmeimages/optimized_model_results.png" width="75%"> </img>
+**Figure 2**: Top 5 models from optimization, optimization method in brackets
+
+
 
   Even though the R2 of the best model is quite high (higher than I expected) at 0.65, the RMSE is remained quite high, and since we are predicting values between 0-30% THC, having a 95% confidence interval (1.96*RMSE) of Â±~10% THC is a poor result, so I feel like I half met my goal, in that I have a model that can predict the THC content of a majority of cannabis plants using their genetics, but not with great confidence. However the result of this project can still be refined and be used to help mitigate the high cost of selective cannabis strain breeding programs. 
 
