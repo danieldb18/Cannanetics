@@ -12,8 +12,7 @@ The genetics data from the project mentioned above is still available on Google�
   This resulted in my final data frame, which contained 5 columns in total, with 4187 rows, for 542 unique cannabis genome samples, and 350 unique strains. The columns contain the unique genetic sample ID (‘sra’) as a string, the strain name (‘strain’) as a string, the variants which exist in the sample as a string list of the variants (‘mapped_variant’), the number of variants in the sample (‘num_variant’) as an integer, and the total THC content (‘total_thc’) as a float, as seen in Figure 1. 
 
 ![Final Dataframe](/readmeimages/final_dataset_image.png)
-
-Figure 1: Resulting dataframe from data collection, and matching of genetic and lab data
+<br>**Figure 1**: Resulting dataframe from data collection, and matching of genetic and lab data
 
   In terms of EDA I first explored the distribution of the number of variants each sample had, since I wanted to see if I had any outliers, possibly caused by issues in the process of determining the variants in the sample genome, against the reference genome. I also looked at the distribution of the total THC content, to get an idea of the range for prediction, and the distribution of THC contents across my samples. As well I explored the relationship between the total number of variants to the total THC which revealed clustering of the samples. I then performed a train/test split and count vectorized the ‘mapped_variant’ column, treating each list of variants as a document, and all the lists of variants as a corpus. The counts of the variants became my features, and the total THC became the target for the modeling.
 
@@ -24,8 +23,7 @@ After the initial modelling was completed, all the models performed pretty equal
 Hyper parameter optimization did not yield the results I expected, I saw very little increase across most models in the R2 value, and very little decrease in the RMSE throughout optimization. Overall, the results of the top 5 models (out of 14) from optimization can be found in Figure 2, with the Random Forest Regressor optimized by just its max_depth performing the best, with an R2 score of 0.653 for the test set, and a test RMSE of 4.61 %THC. I also found that the models scores were generally unaffected by the min_df value until it was increased to 80% of the number of documents.
 
 ![Optimized Model Results](/readmeimages/optimized_model_results.png)
-
-Figure 2: Top 5 models from optimization, optimization method in brackets
+<br>**Figure 2**: Top 5 models from optimization, optimization method in brackets
 
   Even though the R2 of the best model is quite high (higher than I expected) at 0.65, the RMSE is remained quite high, and since we are predicting values between 0-30% THC, having a 95% confidence interval (1.96*RMSE) of ±~10% THC is a poor result, so I feel like I half met my goal, in that I have a model that can predict the THC content of a majority of cannabis plants using their genetics, but not with great confidence. However the result of this project can still be refined and be used to help mitigate the high cost of selective cannabis strain breeding programs. 
 
