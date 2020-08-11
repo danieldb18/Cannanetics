@@ -23,7 +23,7 @@ After the initial modelling was completed, all the models performed pretty equal
 Hyper parameter optimization did not yield the results I expected, I saw very little increase across most models in the R2 value, and very little decrease in the RMSE throughout optimization. Overall, the results of the top 5 models (out of 14) from optimization can be found in Figure 2, with the Random Forest Regressor optimized by just its max_depth performing the best, with an R2 score of 0.653 for the test set, and a test RMSE of 4.61 %THC. I also found that the models scores were generally unaffected by the min_df value until it was increased to 80% of the number of documents.
 
 <img src="/readmeimages/optimized_model_results.png" width="75%"> </img>
-**Figure 2**: Top 5 models from optimization, optimization method in brackets
+<br>**Figure 2**: Top 5 models from optimization, optimization method in brackets
 
 
 
